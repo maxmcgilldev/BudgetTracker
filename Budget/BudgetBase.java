@@ -245,7 +245,11 @@ public class BudgetBase extends JPanel {
         String period = (String) timeBox.getSelectedItem();
         switch (period) {
             case "Per Week":
-                return value * WEEKS_IN_YEAR;
+                // Can either go week->month->year or directly week->year
+                // Option 1: Using WEEKS_IN_MONTH
+                return value * WEEKS_IN_MONTH * MONTHS_IN_YEAR;
+                // Option 2: Direct (current way)
+                // return value * WEEKS_IN_YEAR;
             case "Per Month":
                 return value * MONTHS_IN_YEAR;
             case "Per Year":
